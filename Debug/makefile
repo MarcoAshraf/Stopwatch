@@ -13,11 +13,9 @@ ORDERED_OBJS += \
 "./BITWISE_OPERATIONS.obj" \
 "./DIO.obj" \
 "./GPIO_INTERRUPT.obj" \
-"./Keypad.obj" \
 "./LCD.obj" \
 "./Systick.obj" \
 "./main.obj" \
-"./parse.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -128,41 +126,41 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Led_switch.out \
+Stopwatch.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Led_switch.out" \
+"Stopwatch.out" \
 
 BIN_OUTPUTS += \
-Led_switch.hex \
+Stopwatch.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Led_switch.hex" \
+"Stopwatch.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "Led_switch.out"
+	@$(MAKE) --no-print-directory -Onone "Stopwatch.out"
 
 # Tool invocations
-Led_switch.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Stopwatch.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Led_switch.map" --heap_size=0 --stack_size=2048 -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Led_switch_linkInfo.xml" --rom_model -o "Led_switch.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Stopwatch.map" --heap_size=0 --stack_size=2048 -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Stopwatch_linkInfo.xml" --rom_model -o "Stopwatch.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Led_switch.hex: $(EXE_OUTPUTS)
+Stopwatch.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armhex"  -o "Led_switch.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armhex"  -o "Stopwatch.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "BITWISE_OPERATIONS.obj" "DIO.obj" "GPIO_INTERRUPT.obj" "Keypad.obj" "LCD.obj" "Systick.obj" "main.obj" "parse.obj" "tm4c123gh6pm_startup_ccs.obj" 
-	-$(RM) "BITWISE_OPERATIONS.d" "DIO.d" "GPIO_INTERRUPT.d" "Keypad.d" "LCD.d" "Systick.d" "main.d" "parse.d" "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "BITWISE_OPERATIONS.obj" "DIO.obj" "GPIO_INTERRUPT.obj" "LCD.obj" "Systick.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
+	-$(RM) "BITWISE_OPERATIONS.d" "DIO.d" "GPIO_INTERRUPT.d" "LCD.d" "Systick.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

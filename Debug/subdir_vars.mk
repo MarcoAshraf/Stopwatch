@@ -54,7 +54,6 @@ C_DEPS__QUOTED += \
 "tm4c123gh6pm_startup_ccs.d" 
 
 C_SRCS__QUOTED += \
-"../BITWISE_OPERATIONS.c" \
 "../DIO.c" \
 "../GPIO_INTERRUPT.c" \
 "../LCD.c" \

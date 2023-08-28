@@ -1,21 +1,38 @@
 #include "BITWISE_OPERATIONS.h"
 
-uint8_t SETBIT(uint32_t reg, uint8_t bit)
+uint32_t SETBIT(uint32_t reg, uint8_t bit)
 {
-    return (uint8_t)(reg |= (1U<<bit));
+    uint32_t temp = (uint32_t)bit;
+    uint32_t temp1 = 1U;
+    temp = temp1 << temp;
+    reg = reg | temp;
+    return reg;
 }
 
-uint8_t CLEARBIT(uint32_t reg, uint8_t bit)
+uint32_t CLEARBIT(uint32_t reg, uint8_t bit)
 {
-    return (uint8_t)(reg &= ~(1U<<bit));
+    uint32_t temp = (uint32_t)bit;
+    uint32_t temp1 = 1U;
+    temp = temp1 << temp;
+    reg = reg & (~temp);
+    return reg;
 }
 
-uint8_t TOGGLEBIT(uint32_t reg, uint8_t bit)
+uint32_t TOGGLEBIT(uint32_t reg, uint8_t bit)
 {
-    return (uint8_t)(reg ^= (1U<<bit));
+    uint32_t temp = (uint32_t)bit;
+    uint32_t temp1 = 1U;
+    temp = temp1 << temp;
+    reg = reg ^ temp;
+    return reg;
 }
 
 uint8_t CHECKBIT(uint32_t reg, uint8_t bit)
 {
-    return (uint8_t)(reg & (1U<<bit))>>bit;
+    uint32_t temp = (uint32_t)bit;
+    uint32_t temp1 = 1U;
+    uint32_t temp2 = (uint32_t)bit;
+    temp = temp1 << temp;
+    reg = (reg & temp)>>temp2;
+    return (uint8_t)reg;
 }
